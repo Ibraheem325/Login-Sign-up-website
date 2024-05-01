@@ -1,1 +1,1 @@
-Website likn: https://signuplogout-0e9ee6115c08.herokuapp.com
+Website link: https://signuplogout-0e9ee6115c08.herokuapp.com
