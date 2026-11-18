@@ -17,7 +17,7 @@ backend basics: routing, authentication, and storing data in a SQL database.
 - **Flask** for routes, blueprints and Jinja2 templates
 - **Flask-Login** for user sessions
 - **SQL via SQLAlchemy**: two tables, `User` and `Note`, linked by a one-to-many relationship
-  through a foreign key. The app uses SQLite locally and Postgres in the deployed version.
+  through a foreign key. It runs on SQLite by default and can use Postgres by setting `DATABASE_URL`.
 - **Bootstrap** and a little JavaScript for the front end
 
 Originally written with Python 3.11; the deployed version runs on Python 3.12.
