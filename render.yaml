@@ -1,0 +1,16 @@
+# One-click deploy on Render's free tier: https://render.com/deploy
+services:
+  - type: web
+    name: login-signup-website
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn main:app
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.5
+      - key: SECRET_KEY
+        generateValue: true
+      # Optional: set DATABASE_URL to a free Postgres (e.g. Neon) so accounts survive restarts.
+      - key: DATABASE_URL
+        sync: false

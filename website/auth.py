@@ -1,8 +1,7 @@
-
 from flask import Blueprint, render_template, request, flash, redirect, url_for
 from .models import User
 from werkzeug.security import generate_password_hash, check_password_hash
-from . import db  
+from . import db
 from flask_login import login_user, login_required, logout_user, current_user
 
 
@@ -12,8 +11,8 @@ auth = Blueprint('auth', __name__)
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        email = request.form.get('email')
-        password = request.form.get('password')
+        email = (request.form.get('email') or '').strip().lower()
+        password = request.form.get('password') or ''
 
         user = User.query.filter_by(email=email).first()
         if user:
@@ -39,10 +38,10 @@ def logout():
 @auth.route('/sign-up', methods=['GET', 'POST'])
 def sign_up():
     if request.method == 'POST':
-        email = request.form.get('email')
-        first_name = request.form.get('firstName')
-        password1 = request.form.get('password1')
-        password2 = request.form.get('password2')
+        email = (request.form.get('email') or '').strip().lower()
+        first_name = (request.form.get('firstName') or '').strip()
+        password1 = request.form.get('password1') or ''
+        password2 = request.form.get('password2') or ''
 
         user = User.query.filter_by(email=email).first()
         if user:
